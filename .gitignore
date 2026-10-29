@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+
+# Secrets and local config: never commit these
+.env
+.env.*
+!.env.example
+firebase-service-account.json
+*-service-account*.json
+secret/
+
+# User uploads (kept on the server, not in git)
+uploads/*
+!uploads/.gitkeep
+
+# Logs
+*.log
+npm-debug.log*
+
+# Archives and backups
+*.zip
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Test and build output
+coverage/
+.vercel/
