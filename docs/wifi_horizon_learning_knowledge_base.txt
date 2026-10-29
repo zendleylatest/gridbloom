@@ -1,0 +1,784 @@
+WiFi Horizon Knowledge Base
+
+App Overview
+Q: What is WiFi Horizon?
+A: WiFi Horizon, also shown as WiFiHorizon: AI WiFi Analyzer, is a smart WiFi utility app that helps users understand their WiFi connection, monitor signal quality, scan nearby networks, test internet speed, review WiFi health, and get AI-powered troubleshooting guidance.
+
+Q: What can I do with WiFi Horizon?
+A: You can monitor your current WiFi connection, view SSID and local IP details, check signal strength, review band and channel information, scan nearby networks, run speed tests, view speed test history, ask the AI assistant WiFi questions, and manage app settings.
+
+Q: Who is WiFi Horizon for?
+A: WiFi Horizon is for users who want clearer WiFi diagnostics, easier troubleshooting, better signal awareness, and practical guidance for improving home, office, or personal network performance.
+
+Q: Is WiFi Horizon only a speed test app?
+A: No. WiFi Horizon includes speed testing, but it also provides signal monitoring, network details, nearby network scanning, WiFi health scoring, channel and band information, AI WiFi guidance, settings, profile features, and premium unlimited chat access.
+
+Q: What makes WiFi Horizon useful?
+A: WiFi Horizon turns technical WiFi information such as signal strength, frequency band, channel, link speed, network security, and scan results into simpler explanations and practical steps users can understand.
+
+Q: Does WiFi Horizon fix WiFi problems automatically?
+A: No. WiFi Horizon provides diagnostics and recommendations. Users may still need to restart equipment, move a router, change router settings, contact their internet provider, upgrade equipment, or check device-specific issues.
+
+Q: Can WiFi Horizon guarantee faster internet?
+A: No. The app can help identify likely issues and suggest improvements, but real speed depends on your internet plan, router, device hardware, distance, interference, congestion, ISP quality, and network setup.
+
+Q: Can WiFi Horizon be used by beginners?
+A: Yes. WiFi Horizon is designed to make WiFi information easier to understand, even for users who are not technical.
+
+Q: Can WiFi Horizon be used by advanced users?
+A: Yes. Advanced users can review signal values, frequency band, channel, nearby network details, security labels, speed test history, and AI explanations.
+
+Guest Access and Account
+Q: Can I use WiFi Horizon as a guest?
+A: Yes. Guest users can enter the app and use basic functionality without creating an account.
+
+Q: What can guest users do?
+A: Guest users can use the app in a limited mode and can use the AI WiFi chat up to the guest message limit.
+
+Q: How many AI chat messages do guest users get?
+A: Guest users get 3 AI chat messages unless the backend limit is changed.
+
+Q: What happens when a guest reaches the AI chat limit?
+A: The app shows a guest limit modal that asks the user to sign up to continue.
+
+Q: What can signed-in free users do?
+A: Signed-in free users can use the app with account features, save their session state where supported, view profile settings, and use AI chat up to the signed-in free message limit.
+
+Q: How many AI chat messages do signed-in free users get?
+A: Signed-in free users get 5 AI chat messages unless the backend limit is changed.
+
+Q: What happens when a signed-in free user reaches the AI chat limit?
+A: The app shows a free limit modal and directs the user to the Premium screen to upgrade for unlimited AI chat.
+
+Q: What do Pro users get?
+A: Pro users get unlimited AI WiFi chat.
+
+Q: Does Pro unlock anything besides unlimited AI chat?
+A: No. The current Premium benefit is unlimited AI WiFi chat.
+
+Q: Can guests become signed-in users?
+A: Yes. Guests can sign up or log in from the auth welcome flow.
+
+Q: Why should I create an account?
+A: Creating an account allows the app to recognize you as a signed-in user, apply the signed-in message limit, manage profile information, and support premium entitlement syncing.
+
+Q: Can I sign in with email and password?
+A: Yes. The app supports email and password account access.
+
+Q: Can I sign in with Google?
+A: Yes. The app includes Google sign-in support where configured and available.
+
+Q: Can I reset my password?
+A: Yes. Users can request a password reset code and set a new password.
+
+Q: Does the app send an OTP for account verification or password reset?
+A: Yes. The backend sends OTP emails for verification and password reset flows.
+
+Q: Can users edit their profile?
+A: Yes. Signed-in users can edit profile information such as name and profile photo where supported.
+
+Premium and Subscription
+Q: What is WiFi Horizon Premium?
+A: WiFi Horizon Premium is the paid access level that unlocks unlimited AI WiFi chat.
+
+Q: What does Premium unlock?
+A: Premium unlocks unlimited AI WiFi chat with no free message limit.
+
+Q: Does Premium unlock more speed tests?
+A: No. The current Premium feature is unlimited AI WiFi chat.
+
+Q: Does Premium unlock more scans?
+A: No. The current Premium feature is unlimited AI WiFi chat.
+
+Q: Does Premium unlock advanced router control?
+A: No. Premium currently unlocks unlimited AI WiFi chat only.
+
+Q: How much does WiFi Horizon Premium cost?
+A: The configured display prices are $2.89 per month or $14.89 per year.
+
+Q: What is the monthly subscription?
+A: The monthly subscription provides Premium access for a monthly billing period according to the app store subscription rules.
+
+Q: What is the yearly subscription?
+A: The yearly subscription provides Premium access for an annual billing period according to the app store subscription rules.
+
+Q: Does a subscription renew automatically?
+A: If purchased through an app store, the subscription may renew automatically according to that app store's rules.
+
+Q: How can I cancel a subscription?
+A: Users should manage or cancel subscriptions through their app store account settings.
+
+Q: Does deleting the app cancel a subscription?
+A: No. Deleting the app does not automatically cancel an active subscription. Users should cancel through the app store if they want to stop renewal.
+
+Q: Can WiFi Horizon issue refunds directly?
+A: Refunds are usually handled by the relevant app store or payment provider according to their policies.
+
+Q: Can Premium access be manually granted?
+A: An administrator may grant premium by updating the user's subscription and premium fields in MongoDB. This should be done carefully and only for legitimate users.
+
+Q: How does the app show that a user is Pro?
+A: The app shows a Pro badge in places such as the app bar and settings/profile surfaces when the user's entitlement is active.
+
+Q: Why does the Premium screen show an expiry date?
+A: The Premium screen shows the subscription's stored expiration or renewal date when it is available.
+
+Q: What should users do if Premium does not appear after purchase?
+A: Users should try Restore purchase, make sure they are signed in, check their internet connection, and contact support if the problem continues.
+
+Q: What should users do if the Pro badge does not appear?
+A: They should refresh the app, verify they are signed in with the correct account, restore purchase if applicable, and contact support if Premium still does not appear.
+
+AI WiFi Assistant
+Q: What is the AI WiFi Assistant?
+A: The AI WiFi Assistant is a chat feature that helps answer WiFi questions, explain network details, and suggest troubleshooting steps.
+
+Q: What can I ask the AI assistant?
+A: You can ask about weak WiFi, slow internet, signal strength, dBm values, frequency bands, channels, router placement, nearby network congestion, speed test results, device connection issues, and general WiFi troubleshooting.
+
+Q: Can the AI assistant use my live WiFi data?
+A: Yes, if you allow device and WiFi data sharing. The app can send selected technical WiFi details to the AI service for more relevant responses.
+
+Q: What data can be sent to the AI assistant?
+A: Selected technical data may include connected SSID, signal strength, link speed, band, channel, security, local IP, nearby network count, nearby network details, and recent speed test context where available.
+
+Q: Does the AI assistant require device data sharing?
+A: No. You can deny device data sharing, but the assistant's answers may be less personalized.
+
+Q: Can I enable device data sharing later?
+A: Yes. You can enable Share Device & WiFi Info in Settings if you previously denied it.
+
+Q: Can the AI assistant be wrong?
+A: Yes. AI responses can be incomplete or inaccurate. Users should use judgment and verify important recommendations before changing network settings.
+
+Q: Does the AI assistant replace a network technician?
+A: No. The assistant provides general guidance and troubleshooting suggestions. Complex network, security, business, or ISP issues may require a qualified technician or provider support.
+
+Q: Can the AI assistant access my router admin password?
+A: No. The app does not need your router admin password for normal AI guidance. Users should not share passwords, private keys, or sensitive credentials in chat.
+
+Q: Can the AI assistant change router settings automatically?
+A: No. It can suggest changes, but users must make router changes themselves in their router app or admin panel.
+
+Q: Can the AI assistant diagnose ISP outages?
+A: It can suggest signs of an ISP issue, such as slow speed with strong local signal or problems across multiple devices, but it cannot directly confirm outages unless the user provides information.
+
+Q: What happens when non-Pro users run out of AI messages?
+A: Guests are asked to sign up, and signed-in free users are asked to upgrade to Premium.
+
+Q: Do Pro users have unlimited AI chat?
+A: Yes. Pro users have unlimited AI WiFi chat.
+
+FAQ Chatbot and Learning Knowledge
+Q: What is the FAQ Assistant?
+A: The FAQ Assistant is a support chatbot that answers questions based on the curated WiFi Horizon knowledge base.
+
+Q: Where does the FAQ Assistant get answers?
+A: The FAQ Assistant uses the knowledge base stored in the backend and managed through the active admin system.
+
+Q: Can the FAQ Assistant answer outside the knowledge base?
+A: It should answer only from the knowledge base. If the answer is not available, it should say that it does not have information in its current knowledge base and recommend contacting support.
+
+Q: What is AI learning in this app?
+A: AI learning means admins can add, update, deactivate, reactivate, and manage knowledge base entries in MongoDB so the FAQ Assistant can answer from curated app-specific information.
+
+Q: Does AI learning mean the app trains a new model?
+A: No. In this context, AI learning means the chatbot retrieves and uses curated knowledge entries. It does not train a custom AI model on the device.
+
+Q: Can admin knowledge be updated without releasing a new app?
+A: Yes. Knowledge entries can be managed in the backend database so the FAQ Assistant can use updated information without changing the mobile app code.
+
+Home Screen and WiFi Health
+Q: What is the Home screen used for?
+A: The Home screen shows current WiFi connection information, WiFi health score, SSID, local IPv4 address, signal history, and quick access to network-related details.
+
+Q: What does SSID mean?
+A: SSID is the WiFi network name that users see when choosing a network.
+
+Q: What does BSSID mean?
+A: BSSID is a unique identifier for a WiFi access point, usually related to the router or access point radio. It may not always be shown depending on platform limitations.
+
+Q: What is local IPv4?
+A: Local IPv4 is the device's local network address assigned by the router, such as 192.168.x.x. It is used inside the local network.
+
+Q: What is WiFi signal strength?
+A: WiFi signal strength measures how strongly your device receives the wireless signal from the router or access point.
+
+Q: What is RSSI?
+A: RSSI stands for Received Signal Strength Indicator. It is commonly shown in dBm and helps estimate WiFi signal quality.
+
+Q: What does dBm mean?
+A: dBm is a signal strength unit. WiFi signal values are usually negative numbers, and values closer to zero are stronger.
+
+Q: Is -50 dBm good?
+A: Yes. Around -50 dBm is usually a strong WiFi signal.
+
+Q: Is -60 dBm good?
+A: Around -60 dBm is usually good for normal browsing, streaming, and calls.
+
+Q: Is -70 dBm weak?
+A: Around -70 dBm is fair to weak. It may work but can cause slower speeds, buffering, or unstable calls.
+
+Q: Is -80 dBm bad?
+A: Around -80 dBm is weak and may cause dropouts, slow speeds, or difficulty maintaining a stable connection.
+
+Q: Why does WiFi signal show negative numbers?
+A: WiFi signal is measured in dBm, where values are typically below zero. A value such as -50 dBm is stronger than -80 dBm.
+
+Q: What is the WiFi health score?
+A: The WiFi health score is a simplified rating that summarizes connection quality using signal strength and link speed information where available.
+
+Q: How is the WiFi health score calculated?
+A: The app maps RSSI roughly from weak to strong and lightly factors link speed to produce a score from 0 to 100.
+
+Q: What do WiFi health labels mean?
+A: Scores may be labeled Excellent, Good, Fair, Weak, or Poor to help users understand network quality quickly.
+
+Q: What does Excellent WiFi health mean?
+A: Excellent generally means the signal and connection quality look strong.
+
+Q: What does Good WiFi health mean?
+A: Good generally means the network should work well for normal use.
+
+Q: What does Fair WiFi health mean?
+A: Fair means the connection may work but could be affected by distance, interference, or congestion.
+
+Q: What does Weak WiFi health mean?
+A: Weak means users may experience slow speeds, buffering, lag, or drops.
+
+Q: What does Poor WiFi health mean?
+A: Poor means the device likely has a very weak or unreliable connection.
+
+Q: Can the health score be wrong?
+A: Yes. It is a helpful estimate based on available device data. Real-world performance can also depend on ISP speed, router load, device hardware, congestion, and server conditions.
+
+Q: Why can my health score be high but internet still slow?
+A: A strong WiFi signal only means the local wireless connection looks good. Slow internet can still be caused by ISP issues, low plan speed, router overload, remote server problems, VPNs, or many devices using bandwidth.
+
+Q: Why can my speed be fast but signal score lower?
+A: Short speed tests may still perform well even when signal is not ideal, especially if the router and internet plan are strong. Signal quality affects stability and consistency over time.
+
+Nearby Networks and Scanner
+Q: What is the Nearby Networks screen?
+A: The Nearby Networks screen shows WiFi networks detected near the device, where supported by the operating system and permissions.
+
+Q: What does nearby network scanning show?
+A: It may show SSID, BSSID, signal strength, band, channel, security type, and whether a network is connected.
+
+Q: Why does scanning require location permission?
+A: Android and iOS restrict WiFi scanning and WiFi details because nearby networks can reveal location-related information. Location permission is required by the platform.
+
+Q: Why does scanning require Nearby WiFi Devices permission on Android 13+?
+A: Android 13 and newer use the Nearby WiFi Devices permission for certain WiFi scanning and network detail access.
+
+Q: Why do I see no nearby networks?
+A: WiFi may be off, permissions may be denied, scanning may be restricted by the device, the app may need a refresh, or the operating system may limit scan frequency.
+
+Q: Why are hidden networks shown as Hidden?
+A: Some routers hide SSID broadcast. The app may detect the network but cannot display a normal network name.
+
+Q: What does the signal value in nearby networks mean?
+A: It shows the detected RSSI signal strength in dBm. Higher values closer to zero are stronger.
+
+Q: What does the connected label mean?
+A: Connected means that entry appears to be the network currently used by the device.
+
+Q: Can WiFi Horizon show every network around me?
+A: Not always. Scan results depend on hardware, operating system rules, permissions, scan timing, frequency band support, and signal range.
+
+Q: Why are scan results different from another app?
+A: Scan timing, OS restrictions, device antennas, app permissions, and filtering can make results differ between apps.
+
+Q: Can WiFi Horizon see passwords of nearby networks?
+A: No. The app does not show WiFi passwords.
+
+Q: Can WiFi Horizon connect to nearby networks automatically?
+A: No. The app displays information and guidance. Users connect through device WiFi settings.
+
+Channels, Bands, and Frequency
+Q: What is a WiFi band?
+A: A WiFi band is a frequency range used by wireless networks, such as 2.4 GHz, 5 GHz, or 6 GHz.
+
+Q: What is 2.4 GHz WiFi?
+A: 2.4 GHz WiFi usually has longer range and better wall penetration, but it is often more crowded and slower than 5 GHz or 6 GHz.
+
+Q: What is 5 GHz WiFi?
+A: 5 GHz WiFi usually offers faster speeds and less congestion than 2.4 GHz, but it has shorter range and weaker wall penetration.
+
+Q: What is 6 GHz WiFi?
+A: 6 GHz WiFi is used by newer WiFi 6E and WiFi 7 equipment. It can offer high speeds and less congestion, but range may be shorter and device support is limited.
+
+Q: Which band should I use?
+A: Use 2.4 GHz for longer range and simple devices, 5 GHz for faster nearby connections, and 6 GHz if both router and device support it and you are close enough.
+
+Q: What is a WiFi channel?
+A: A WiFi channel is a smaller slice of a frequency band used by a router to communicate with devices.
+
+Q: Why do channels matter?
+A: If many nearby networks use the same or overlapping channels, interference and congestion can reduce performance.
+
+Q: What channels are usually best on 2.4 GHz?
+A: Channels 1, 6, and 11 are commonly recommended for 2.4 GHz because they do not overlap in many regions.
+
+Q: Should I always manually change my WiFi channel?
+A: Not always. Many routers handle channel selection automatically. Manual changes may help if auto selection performs poorly.
+
+Q: Can WiFi Horizon change my router channel?
+A: No. The app can help identify channel information and suggest ideas, but channel changes must be made in the router settings.
+
+Q: What is frequency in MHz?
+A: Frequency in MHz identifies the exact radio frequency being used. The app converts frequency into a band and channel where possible.
+
+Q: Why does the channel show unknown?
+A: The device or operating system may not provide frequency data, or the frequency may not map cleanly to a known channel.
+
+Security and Network Safety
+Q: What security types can WiFi Horizon show?
+A: The app may show labels such as WPA3, WPA2, WPA, WEP, Open, or another security string depending on scan results.
+
+Q: Is WPA3 secure?
+A: WPA3 is currently one of the stronger common WiFi security standards when properly configured.
+
+Q: Is WPA2 secure?
+A: WPA2 is widely used and generally secure when paired with a strong password and updated router firmware.
+
+Q: Is WPA outdated?
+A: Older WPA is weaker than WPA2 and WPA3 and should be upgraded when possible.
+
+Q: Is WEP secure?
+A: No. WEP is obsolete and insecure. Users should switch to WPA2 or WPA3 if possible.
+
+Q: Is an open WiFi network safe?
+A: Open WiFi has no WiFi password protection and can expose traffic risks. Users should avoid sensitive activity on open networks unless using trusted protection such as HTTPS and a reputable VPN.
+
+Q: Can WiFi Horizon guarantee that a network is safe?
+A: No. The app can show indicators and provide guidance, but it cannot guarantee a network is safe or free from threats.
+
+Q: Can WiFi Horizon detect hackers?
+A: No. The app is not a full intrusion detection system. It may show network details and possible risk indicators, but it cannot prove hacking by itself.
+
+Q: What should I do if I suspect someone is using my WiFi?
+A: Check your router's connected devices list, change the WiFi password, use WPA2 or WPA3, disable WPS if not needed, update router firmware, and contact your ISP or router vendor if unsure.
+
+Q: Should I share my WiFi password in AI chat?
+A: No. Do not share WiFi passwords, router admin passwords, private keys, or sensitive credentials in chat.
+
+Speed Test
+Q: What is the Speed Test screen?
+A: The Speed Test screen measures internet download and upload speed from the device.
+
+Q: What does download speed mean?
+A: Download speed measures how fast data comes from the internet to your device. It affects streaming, browsing, downloads, and loading pages.
+
+Q: What does upload speed mean?
+A: Upload speed measures how fast data goes from your device to the internet. It affects video calls, sending files, cloud backups, and live streaming.
+
+Q: Why is download speed usually higher than upload speed?
+A: Many internet plans are asymmetric, meaning they provide more download bandwidth than upload bandwidth.
+
+Q: Why are speed test results different each time?
+A: Results can vary due to WiFi signal, server selection, network congestion, ISP load, other devices, background downloads, VPNs, and test timing.
+
+Q: Why is my WiFi speed lower than my internet plan?
+A: Your plan speed is the maximum under ideal conditions. WiFi can be limited by distance, interference, router capability, device hardware, band, channel congestion, and ISP conditions.
+
+Q: Why is speed faster near the router?
+A: A stronger signal near the router usually allows higher modulation rates, fewer retransmissions, and more stable throughput.
+
+Q: Why is speed slower in another room?
+A: Walls, distance, floors, metal, appliances, and interference reduce signal quality and can lower speed.
+
+Q: Why is speed slow even with full bars?
+A: Full bars only estimate signal strength. Internet speed can still be limited by router load, ISP problems, congestion, device limits, or remote server issues.
+
+Q: Can I stop a speed test?
+A: Yes. The speed test screen includes a stop action while a test is running.
+
+Q: Does speed testing use data?
+A: Yes. Speed tests transfer data to measure performance. Users on limited mobile or metered connections should use speed tests carefully.
+
+Q: Does WiFi Horizon save speed test history?
+A: Yes. The app has a speed test history screen that stores previous results locally.
+
+Q: What does speed test history show?
+A: Speed test history can show previous download speed, upload speed, ping or latency where available, test time, and related records depending on the stored result.
+
+Q: Can speed test history be empty?
+A: Yes. It will be empty until the user runs speed tests.
+
+Troubleshooting Weak WiFi
+Q: How can I improve weak WiFi signal?
+A: Move closer to the router, place the router centrally and higher, reduce walls and obstacles, avoid placing the router near metal or appliances, use 5 GHz for nearby speed, use 2.4 GHz for range, and consider mesh WiFi or an extender for large spaces.
+
+Q: What should I do if WiFi keeps disconnecting?
+A: Restart the router and device, check signal strength, move closer, forget and reconnect to the network, update router firmware, reduce interference, check if other devices disconnect too, and contact the ISP if the issue affects the whole network.
+
+Q: What should I do if WiFi is connected but internet does not work?
+A: Check if other devices have internet, restart router and modem, confirm the ISP is not down, disable VPN temporarily, forget and reconnect WiFi, check DNS settings, and contact the ISP if needed.
+
+Q: What should I do if only one device has WiFi problems?
+A: Restart that device, forget and reconnect to WiFi, update the device software, check VPN or private DNS settings, reset network settings if needed, and compare with another network.
+
+Q: What should I do if all devices have WiFi problems?
+A: Restart modem and router, check ISP status, inspect cables, test near the router, verify router lights, and contact your internet provider if the problem continues.
+
+Q: How can I reduce WiFi interference?
+A: Move the router away from microwaves, cordless phones, Bluetooth-heavy areas, thick walls, metal cabinets, and crowded electronics. Try a different channel or band if needed.
+
+Q: Why does my WiFi slow down at night?
+A: Evening congestion can happen when many people in the home or neighborhood use the internet at the same time. ISP congestion can also affect peak hours.
+
+Q: Why is video calling unstable?
+A: Video calls need stable latency, upload speed, and signal quality. Weak WiFi, upload congestion, router overload, or ISP issues can cause freezing and dropouts.
+
+Q: Why do games lag on WiFi?
+A: Games are sensitive to latency, jitter, and packet loss. Weak signal, congestion, background downloads, or router load can cause lag.
+
+Q: How can I improve gaming on WiFi?
+A: Use 5 GHz or 6 GHz near the router, reduce other traffic, move closer, restart the router, use Ethernet if possible, and avoid background downloads.
+
+Q: How can I improve streaming quality?
+A: Use a strong signal, choose 5 GHz near the router, reduce other bandwidth use, restart the router, check your internet plan speed, and place streaming devices closer to the access point.
+
+Q: What is a WiFi dead zone?
+A: A dead zone is an area where WiFi signal is too weak or unstable for reliable use.
+
+Q: How can I fix a WiFi dead zone?
+A: Reposition the router, add a mesh node, use a wired access point, reduce obstacles, change band or channel, or use a better router for larger coverage.
+
+Q: Are WiFi extenders always good?
+A: Extenders can help coverage but may reduce speed or add latency if poorly placed. Mesh systems or wired access points are often better for larger homes.
+
+Router Placement and Setup
+Q: Where should I place my router?
+A: Place the router near the center of the area you want to cover, elevated, open, away from metal, thick walls, appliances, and corners.
+
+Q: Should the router be on the floor?
+A: No. A router usually performs better when placed higher, such as on a shelf or table.
+
+Q: Should I hide the router in a cabinet?
+A: No. Cabinets, especially metal or dense furniture, can weaken WiFi signal.
+
+Q: Can walls affect WiFi?
+A: Yes. Concrete, brick, stone, metal, mirrors, and thick walls can reduce WiFi signal.
+
+Q: Can microwaves affect WiFi?
+A: Yes. Microwaves can interfere with 2.4 GHz WiFi, especially when the router or device is nearby.
+
+Q: Can Bluetooth affect WiFi?
+A: Bluetooth can contribute to congestion in the 2.4 GHz band, although modern devices often manage coexistence well.
+
+Q: Should I restart my router?
+A: Restarting can help temporary router problems, memory issues, or stuck connections, but frequent restarts may indicate a deeper issue.
+
+Q: How often should I replace my router?
+A: It depends on performance, coverage, security updates, and device needs. Older routers may struggle with many devices or newer internet speeds.
+
+Q: Should I update router firmware?
+A: Yes. Router firmware updates can improve stability, performance, and security.
+
+Q: Should I use the same WiFi name for 2.4 GHz and 5 GHz?
+A: It depends. A shared name is convenient and lets the router steer devices. Separate names give users more manual control.
+
+Q: What is band steering?
+A: Band steering is a router feature that tries to move devices between 2.4 GHz, 5 GHz, or 6 GHz based on performance and signal.
+
+Q: What is mesh WiFi?
+A: Mesh WiFi uses multiple nodes to provide broader coverage under one network name.
+
+Q: Is mesh better than an extender?
+A: Mesh often provides better roaming and coverage than basic extenders, but performance depends on placement, backhaul quality, and hardware.
+
+Permissions and Device Access
+Q: Why does WiFi Horizon need location permission?
+A: Android and iOS require location-related permission for WiFi scanning and access to certain WiFi details because nearby WiFi networks can reveal location information.
+
+Q: Does location permission mean the app tracks my location?
+A: The permission may be required by the operating system for WiFi features. The app is intended to use it for WiFi scanning and network information, not continuous location tracking.
+
+Q: Why does the app need Nearby WiFi Devices permission?
+A: On Android 13 and newer, Nearby WiFi Devices permission is required for certain WiFi scanning and network detail features.
+
+Q: Why does the app need internet permission?
+A: Internet permission is needed for speed tests, backend communication, account login, AI chat, OTP flows, subscription verification, and support features.
+
+Q: Why does the app need notification permission?
+A: Notification permission may be used for app notifications where supported.
+
+Q: What happens if I deny permissions?
+A: Some WiFi details, nearby network scanning, notifications, or AI personalization features may not work correctly.
+
+Q: Can I change permissions later?
+A: Yes. You can change app permissions in device settings, and the app includes a Permissions shortcut in settings.
+
+Q: Why does iPhone show less WiFi information?
+A: iOS restricts third-party access to WiFi scanning and detailed network information more than Android.
+
+Q: Why does Android show more WiFi details?
+A: Android provides more WiFi APIs, though access still depends on permissions, device version, manufacturer behavior, and platform restrictions.
+
+Privacy and Data
+Q: What information does WiFi Horizon collect?
+A: The app may process account information, profile information, WiFi and network-related details, scan results, speed test data, device context, AI chat messages, premium status, and technical data needed to operate the app.
+
+Q: What WiFi information may the app access?
+A: Depending on permissions and platform support, the app may access SSID, BSSID, signal strength, local IP, frequency band, channel, link speed, nearby network data, connection health, speed test results, and security labels.
+
+Q: Does WiFi Horizon sell personal data?
+A: No. The privacy policy states that personal data is not sold.
+
+Q: Is most app history local?
+A: Many app records such as speed test history and local scan-related history may be stored locally on the device.
+
+Q: When can data leave the device?
+A: Selected technical WiFi data may be sent to backend or AI services when the user uses AI-powered features or account-related features.
+
+Q: Does AI chat send messages to a server?
+A: Yes. AI chat requires backend and AI service communication to generate responses.
+
+Q: Does WiFi Horizon store WiFi passwords?
+A: No. The app does not need to collect or store WiFi passwords for its core features.
+
+Q: Should users enter passwords in AI chat?
+A: No. Users should not enter WiFi passwords, router admin passwords, or sensitive credentials into AI chat.
+
+Q: Is data completely secure?
+A: The app uses reasonable measures to protect information, but no transmission or storage method is completely secure.
+
+Q: Can users delete local app data?
+A: Users can remove local data by clearing app data, deleting histories where supported, or uninstalling the app.
+
+Q: Does uninstalling the app delete account data?
+A: Uninstalling may remove local device data, but it does not necessarily delete backend account records.
+
+Q: How can users request account or data help?
+A: Users can contact support using the support email listed in the app.
+
+Settings and Profile
+Q: What is available in Settings?
+A: Settings include profile access, Premium, theme controls, notifications, device and WiFi info sharing, permissions, privacy policy, terms and conditions, promos, FAQ, contact options, and support future updates.
+
+Q: What is Share Device & WiFi Info?
+A: Share Device & WiFi Info allows the AI assistant to use selected device and WiFi details for more personalized troubleshooting responses.
+
+Q: Can I disable device and WiFi sharing?
+A: Yes. You can turn off the Share Device & WiFi Info setting.
+
+Q: What happens if device and WiFi sharing is off?
+A: The AI assistant can still answer general questions, but responses may be less specific to your actual network conditions.
+
+Q: What is the Pro badge?
+A: The Pro badge shows that the current user has active Premium access.
+
+Q: Why is the Pro badge missing?
+A: It may be hidden if the user is not Pro, the entitlement has not synced, the user is signed into a different account, or the app needs to refresh.
+
+Q: What does the Notifications setting do?
+A: It controls whether app notifications are enabled where supported by the platform.
+
+Q: What does the Permissions item do?
+A: It opens device app settings so users can manage permissions.
+
+Q: Can users switch theme mode?
+A: Yes. The app includes theme mode controls in settings.
+
+Q: Can users log out?
+A: Yes. Signed-in users can log out from settings/profile.
+
+Q: Can guest users log out?
+A: Guest users generally do not have a normal logged-in session, but they can go through sign-up or login flows.
+
+Limits and Usage Indicators
+Q: Does the app show remaining AI messages?
+A: Yes. Non-Pro users see a remaining message indicator in chat showing messages left and used count.
+
+Q: Why do guests see a message limit indicator?
+A: The indicator helps guests understand how many free AI chat messages remain before sign-up is required.
+
+Q: Why do free signed-in users see a message limit indicator?
+A: The indicator helps free users understand how many free AI chat messages remain before Premium is required for unlimited chat.
+
+Q: Do Pro users see the message limit indicator?
+A: No. Pro users have unlimited AI chat, so the limit indicator is hidden.
+
+Q: Where are chat limits managed?
+A: Chat limits are managed by the backend API. The current defaults are 3 messages for guests, 5 for signed-in free users, and unlimited for Pro users.
+
+Q: Can chat limits change?
+A: Yes. The backend can change configured limits without requiring users to manually count messages.
+
+Technical Limitations
+Q: Why are some WiFi details unavailable?
+A: WiFi details can be unavailable because of permissions, operating system restrictions, device manufacturer limitations, WiFi being off, not being connected to WiFi, or unsupported APIs.
+
+Q: Why does the app say Not on WiFi?
+A: The device may be using mobile data, Ethernet, or another transport instead of WiFi.
+
+Q: Why does the app say SSID unavailable?
+A: The operating system may hide SSID information, permissions may be missing, location services may be off, or the device may not be connected to WiFi.
+
+Q: Why does BSSID not appear?
+A: Some platforms restrict BSSID access for privacy reasons.
+
+Q: Why does link speed not appear?
+A: The device or operating system may not provide link speed information to apps.
+
+Q: Why does channel information not appear?
+A: Channel depends on frequency data. If frequency is unavailable, the app cannot calculate the channel.
+
+Q: Why are WiFi scan results delayed?
+A: Operating systems throttle WiFi scans to save battery and protect privacy.
+
+Q: Why does refreshing not always change results?
+A: The device may return cached WiFi scan results or the network environment may not have changed.
+
+Q: Why does the app work differently across devices?
+A: WiFi APIs, permissions, chipset behavior, manufacturer restrictions, and operating system versions differ across devices.
+
+Q: Does WiFi Horizon support iOS the same as Android?
+A: The app may run on both platforms, but iOS provides more limited WiFi scanning and network detail access.
+
+Q: Does WiFi Horizon work without internet?
+A: Some local WiFi details may work without internet, but login, AI chat, speed tests, subscription verification, and backend features require internet.
+
+Common WiFi Concepts
+Q: What is a router?
+A: A router connects devices to a local network and usually provides internet access through a modem or ISP connection.
+
+Q: What is a modem?
+A: A modem connects your home or office to the internet provider's network.
+
+Q: What is an access point?
+A: An access point provides WiFi coverage and connects wireless devices to a wired or router-managed network.
+
+Q: What is an extender?
+A: An extender repeats WiFi signal to improve coverage, but it may reduce speed depending on placement and technology.
+
+Q: What is latency?
+A: Latency is the delay between sending a request and receiving a response. It affects gaming, video calls, and responsiveness.
+
+Q: What is ping?
+A: Ping is a common measure of latency, usually shown in milliseconds.
+
+Q: What is jitter?
+A: Jitter is variation in latency. High jitter can make calls, gaming, and streaming feel unstable.
+
+Q: What is packet loss?
+A: Packet loss happens when data packets do not reach their destination. It can cause lag, dropouts, and poor call quality.
+
+Q: What is bandwidth?
+A: Bandwidth is the amount of data a connection can carry over time, often measured in Mbps.
+
+Q: What is Mbps?
+A: Mbps means megabits per second, a common unit for internet speed.
+
+Q: What is throughput?
+A: Throughput is the real data transfer rate achieved by a connection, which may be lower than the theoretical maximum.
+
+Q: What is congestion?
+A: Congestion happens when too many devices or networks compete for available bandwidth or radio space.
+
+Q: What is interference?
+A: Interference is unwanted radio noise or overlapping signals that can reduce WiFi performance.
+
+Q: What is roaming?
+A: Roaming is when a device moves between access points or mesh nodes while staying on the same network.
+
+Q: What is DHCP?
+A: DHCP is the system that automatically assigns local IP addresses to devices on a network.
+
+Q: What is DNS?
+A: DNS translates website names into IP addresses. DNS problems can make websites fail even when WiFi is connected.
+
+Q: What is VPN?
+A: A VPN routes traffic through a private tunnel. It can improve privacy but may also reduce speed or affect connectivity.
+
+Q: What is WPS?
+A: WPS is a router feature for easier device connection. It can be a security risk on some routers and may be disabled if not needed.
+
+Q: What is QoS?
+A: QoS stands for Quality of Service. It prioritizes certain traffic such as gaming, calls, or streaming on supported routers.
+
+Q: What is WiFi 6?
+A: WiFi 6 is a newer WiFi generation designed for better efficiency, speed, and performance with many devices.
+
+Q: What is WiFi 6E?
+A: WiFi 6E extends WiFi 6 into the 6 GHz band on supported routers and devices.
+
+Q: What is WiFi 7?
+A: WiFi 7 is a newer WiFi generation designed for higher throughput, lower latency, and improved performance on supported devices.
+
+Troubleshooting App Issues
+Q: The app cannot read WiFi details. What should I do?
+A: Make sure WiFi is on, connect to a WiFi network, enable required permissions, enable location services where required, restart the app, and check device settings.
+
+Q: The app says permission is required. What should I do?
+A: Open app permissions in device settings and allow the required WiFi, location, nearby devices, or notification permissions.
+
+Q: The app shows old nearby networks. What should I do?
+A: Pull to refresh, wait a moment, check permissions, and remember that the operating system may return cached scan results.
+
+Q: The speed test failed. What should I do?
+A: Check internet connectivity, disable VPN temporarily, try again later, move closer to the router, and make sure another app is not blocking network access.
+
+Q: AI chat is not responding. What should I do?
+A: Check internet connection, confirm the backend is reachable, verify you have remaining messages or Premium, try again, and contact support if it continues.
+
+Q: Login is not working. What should I do?
+A: Check email and password, confirm the account is verified, use password reset if needed, check internet connection, and contact support if the issue continues.
+
+Q: OTP email did not arrive. What should I do?
+A: Check spam or junk folders, confirm the email address is correct, wait a few minutes, request a new code if available, and contact support if it still does not arrive.
+
+Q: Google sign-in failed. What should I do?
+A: Check internet connection, make sure Google Play services are available on Android, try again, or use email login if needed.
+
+Q: Premium purchase failed. What should I do?
+A: Check store account, payment method, internet connection, product availability, and try again. If already purchased, use Restore purchase.
+
+Q: Restore purchase did not work. What should I do?
+A: Make sure you are signed into the same store account and app account used for purchase, then try again or contact support.
+
+Q: Profile update failed. What should I do?
+A: Check internet connection, make sure the uploaded image is not too large, try again, and contact support if it keeps failing.
+
+Q: The app feels inaccurate. What should I do?
+A: Refresh readings, check permissions, compare with router information, test near the router, and remember that app readings depend on operating system data and device hardware.
+
+Safe and Responsible Use
+Q: Can I scan networks that are not mine?
+A: You should use the app lawfully and only analyze networks where you have permission. Nearby network visibility does not give permission to access or interfere with them.
+
+Q: Can WiFi Horizon be used for hacking?
+A: No. WiFi Horizon is intended for network awareness, diagnostics, and troubleshooting. It should not be used for unauthorized access or harmful activity.
+
+Q: Can WiFi Horizon crack passwords?
+A: No. The app does not crack passwords or bypass network security.
+
+Q: Can WiFi Horizon access private data on other devices?
+A: No. The app is not intended to access private data from other devices.
+
+Q: Should I change router settings based only on AI advice?
+A: Use AI advice as guidance. Review router documentation, understand the change, and be careful before changing settings that could disconnect devices.
+
+Q: Should businesses rely on WiFi Horizon for professional audits?
+A: No. Businesses or complex networks should use professional IT tools and qualified network specialists for formal audits.
+
+Support
+Q: Where can users contact support?
+A: Users can contact support at fatimatechnologies@gmail.com.
+
+Q: Who operates WiFi Horizon?
+A: WiFi Horizon is operated by Fatimah Technologies.
+
+Q: What should users include when contacting support?
+A: Users should include their device model, operating system version, app version if known, account email if relevant, a clear description of the problem, screenshots if helpful, and steps already tried.
+
+Q: What should users do for internet provider problems?
+A: If multiple devices are affected, the modem or router lights show an issue, or speed is poor even near the router, users may need to contact their ISP.
+
+Q: What is the main purpose of WiFi Horizon?
+A: The main purpose of WiFi Horizon is to help users understand WiFi quality, diagnose connection problems, test speeds, scan nearby networks, and get practical AI-powered troubleshooting guidance.
+
+Q: What is the main benefit of Premium?
+A: The main benefit of Premium is unlimited AI WiFi chat.

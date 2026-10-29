@@ -1,0 +1,239 @@
+{
+ "levels": [
+  {
+   "id": "daily:2026-10-29",
+   "level": 7,
+   "chapter": 1,
+   "indexInChapter": 7,
+   "ruleset": 1,
+   "seed": 144262696,
+   "difficulty": 0.1968,
+   "peak": false,
+   "boss": false,
+   "knownPieceOrder": false,
+   "board": {
+    "rows": [
+     "........",
+     "....77..",
+     "........",
+     "........",
+     "........",
+     ".......7",
+     ".......7",
+     ".......7"
+    ],
+    "pearls": [],
+    "region": []
+   },
+   "goals": [
+    {
+     "type": "lines",
+     "target": 10
+    }
+   ],
+   "moveLimit": 39,
+   "stars": {
+    "one": "complete",
+    "two": {
+     "movesLeftAtLeast": 8
+    },
+    "three": {
+     "scoreAtLeast": 350
+    }
+   },
+   "validation": {
+    "solver": "greedy-v1",
+    "won": true,
+    "solution": []
+   }
+  },
+  {
+   "id": "daily:2026-10-30",
+   "level": 9,
+   "chapter": 1,
+   "indexInChapter": 9,
+   "ruleset": 1,
+   "seed": 1866583980,
+   "difficulty": 0.2016,
+   "peak": false,
+   "boss": false,
+   "knownPieceOrder": false,
+   "board": {
+    "rows": [
+     "........",
+     "2.....55",
+     "22.....5",
+     ".2.....5",
+     "........",
+     "........",
+     "........",
+     "........"
+    ],
+    "pearls": [],
+    "region": []
+   },
+   "goals": [
+    {
+     "type": "lines",
+     "target": 12
+    }
+   ],
+   "moveLimit": 45,
+   "stars": {
+    "one": "complete",
+    "two": {
+     "movesLeftAtLeast": 9
+    },
+    "three": {
+     "scoreAtLeast": 900
+    }
+   },
+   "validation": {
+    "solver": "greedy-v1",
+    "won": true,
+    "solution": []
+   }
+  },
+  {
+   "id": "daily:2026-11-03",
+   "level": 20,
+   "chapter": 1,
+   "indexInChapter": 20,
+   "ruleset": 1,
+   "seed": 3831753948,
+   "difficulty": 0.308,
+   "peak": true,
+   "boss": false,
+   "knownPieceOrder": false,
+   "board": {
+    "rows": [
+     "......7.",
+     "...33.77",
+     "...3...7",
+     "........",
+     "..7.....",
+     ".77.....",
+     "..7.....",
+     "........"
+    ],
+    "pearls": [],
+    "region": []
+   },
+   "goals": [
+    {
+     "type": "lines",
+     "target": 8
+    }
+   ],
+   "moveLimit": 20,
+   "stars": {
+    "one": "complete",
+    "two": {
+     "movesLeftAtLeast": 4
+    },
+    "three": {
+     "scoreAtLeast": 300
+    }
+   },
+   "validation": {
+    "solver": "greedy-v1",
+    "won": true,
+    "solution": []
+   }
+  },
+  {
+   "id": "daily:2026-09-12",
+   "level": 27,
+   "chapter": 1,
+   "indexInChapter": 27,
+   "ruleset": 1,
+   "seed": 211743560,
+   "difficulty": 0.2448,
+   "peak": false,
+   "boss": false,
+   "knownPieceOrder": false,
+   "board": {
+    "rows": [
+     "........",
+     "........",
+     ".1111...",
+     "........",
+     "..1.....",
+     ".111....",
+     "111.....",
+     "........"
+    ],
+    "pearls": [],
+    "region": []
+   },
+   "goals": [
+    {
+     "type": "lines",
+     "target": 10
+    }
+   ],
+   "moveLimit": 36,
+   "stars": {
+    "one": "complete",
+    "two": {
+     "movesLeftAtLeast": 7
+    },
+    "three": {
+     "scoreAtLeast": 450
+    }
+   },
+   "validation": {
+    "solver": "greedy-v1",
+    "won": true,
+    "solution": []
+   }
+  },
+  {
+   "id": "daily:2026-08-01",
+   "level": 28,
+   "chapter": 1,
+   "indexInChapter": 28,
+   "ruleset": 1,
+   "seed": 2331835620,
+   "difficulty": 0.2472,
+   "peak": false,
+   "boss": false,
+   "knownPieceOrder": false,
+   "board": {
+    "rows": [
+     "....2...",
+     "...22...",
+     ".6..2...",
+     "366.....",
+     "3.6.....",
+     "33......",
+     "........",
+     "........"
+    ],
+    "pearls": [],
+    "region": []
+   },
+   "goals": [
+    {
+     "type": "lines",
+     "target": 11
+    }
+   ],
+   "moveLimit": 32,
+   "stars": {
+    "one": "complete",
+    "two": {
+     "movesLeftAtLeast": 6
+    },
+    "three": {
+     "scoreAtLeast": 650
+    }
+   },
+   "validation": {
+    "solver": "greedy-v1",
+    "won": true,
+    "solution": []
+   }
+  }
+ ]
+}
