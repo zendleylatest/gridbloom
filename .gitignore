@@ -7,7 +7,6 @@ node_modules/
 !.env.example
 firebase-service-account.json
 *-service-account*.json
-secret/
 
 # User uploads (kept on the server, not in git)
 uploads/*
