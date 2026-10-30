@@ -1,5 +1,6 @@
 "use strict";
 const LeaderboardEntry = require("../models/leaderboardEntryModel");
+const User = require("../models/usersModel");
 const { dayKeyValid, weekKey } = require("./gridbloomReplay");
 
 const DAY_MS = 86400000;
@@ -64,13 +65,26 @@ async function boardView(board, { limit = 20, userId = null, onlyUsers = null } 
     LeaderboardEntry.find(filter).sort({ score: -1, updatedAt: 1 }).limit(limit).lean(),
     LeaderboardEntry.countDocuments(filter),
   ]);
+  // Profile pictures are read live, so a new photo shows without a new score.
+  const ids = top.map((e) => e.userId);
+  if (userId) ids.push(userId);
+  const images = new Map();
+  for (const u of await User.find({ _id: { $in: ids } }, "image").lean()) {
+    if (u.image) images.set(String(u._id), u.image);
+  }
   let me = null;
   if (userId) {
     const mine = await LeaderboardEntry.findOne({ board, userId }).lean();
     if (mine) {
       const rank =
         (await LeaderboardEntry.countDocuments({ ...filter, score: { $gt: mine.score } })) + 1;
-      me = { rank, score: mine.score, plays: mine.plays, name: mine.name };
+      me = {
+        rank,
+        score: mine.score,
+        plays: mine.plays,
+        name: mine.name,
+        image: images.get(String(userId)) || null,
+      };
     }
   }
   return {
@@ -81,6 +95,7 @@ async function boardView(board, { limit = 20, userId = null, onlyUsers = null } 
       rank: i + 1,
       name: e.name,
       score: e.score,
+      image: images.get(String(e.userId)) || null,
       isMe: userId ? String(e.userId) === String(userId) : false,
     })),
   };

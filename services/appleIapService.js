@@ -69,4 +69,4 @@ const verifyAppleTransaction = async ({ transactionId }) => {
   };
 };
 
-module.exports = { verifyAppleTransaction };
+module.exports = { verifyAppleTransaction, generateAppleJWT };

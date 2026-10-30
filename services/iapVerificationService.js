@@ -417,4 +417,7 @@ async function verifyIapPurchase({
 module.exports = {
   verifyIapPurchase,
   buildAmazonSubscriptionResult,
+  getGoogleAccessToken,
+  amazonSharedSecret,
+  amazonSandboxEnabled,
 };

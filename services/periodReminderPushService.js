@@ -134,7 +134,8 @@ function parseServiceAccount(raw) {
  * Without it, falls back to the server's default Firebase admin.
  */
 function getReminderMessaging() {
-  const raw = process.env.PERIOD_REMINDER_FIREBASE_SERVICE_ACCOUNT;
+  const raw =
+    process.env.REMINDER_FIREBASE_SERVICE_ACCOUNT || process.env.PERIOD_REMINDER_FIREBASE_SERVICE_ACCOUNT;
   if (raw) {
     const admin = require("firebase-admin");
     let app = admin.apps.find((a) => a && a.name === REMINDER_APP_NAME);
@@ -321,6 +322,7 @@ module.exports = {
   reminderDue,
   buildReminderMessage,
   sendPushToUser,
+  getReminderMessaging,
   sweepPeriodReminders,
   startPeriodReminderScheduler,
   debugRemindersEnabled,

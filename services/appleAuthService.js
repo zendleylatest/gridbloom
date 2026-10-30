@@ -8,6 +8,7 @@
 //   APPLE_BUNDLE_ID — your iOS bundle ID (e.g. com.speckpro.gridbloomgame.android)
 
 const crypto = require("crypto");
+const { methodConflict } = require("./authProviders");
 const jwt = require("jsonwebtoken");
 const jwksClient = require("jwks-rsa");
 
@@ -125,7 +126,16 @@ async function appleAuthService({ identity_token, email, full_name }, User, setU
   user = await User.findOne({ email: userEmail });
 
   if (user) {
-    // Link the Apple ID to the existing account
+    // The email belongs to an account made another way (Google, or email +
+    // password): never take it over, tell the player which method to use.
+    const conflict = methodConflict(user, "apple");
+    if (conflict) {
+      throw Object.assign(new Error(conflict.error), {
+        status: 409,
+        code: conflict.code,
+        method: conflict.method,
+      });
+    }
     if (!user.appleId) {
       user.appleId = appleUserId;
     }

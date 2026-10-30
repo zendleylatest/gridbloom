@@ -17,9 +17,10 @@ const knowledgeRouter = require("./routes/knowledgeRoutes");
 const lunaCycleRouter = require("./routes/lunaCycleRoutes");
 const gameProgressRouter = require("./routes/gameProgressRoutes");
 const leaderboardRouter = require("./routes/leaderboardRoutes");
+const purchaseRouter = require("./routes/purchaseRoutes");
 const appleNotificationRouter = require("./routes/appleNotificationRoutes");
 const { ensureFirebaseAdmin } = require("./utils/firebaseAdminInit");
-const { startPeriodReminderScheduler } = require("./services/periodReminderPushService");
+const { startDailyReminderScheduler } = require("./services/dailyReminderService");
 
 const mongoUri = process.env.MONGODB_URI;
 if (!mongoUri) {
@@ -135,6 +136,11 @@ app.get("/", (req, res) => {
         saveProgress: "PUT /api/game/progress (auth; merges when another device saved first)",
         deleteProgress: "DELETE /api/game/progress (auth)",
       },
+      purchases: {
+        verify: "POST /api/purchases/verify (auth account; checks a one-time purchase with the store)",
+        entitlements: "GET /api/purchases/entitlements (what you own + gems to credit)",
+        claim: "POST /api/purchases/claim (confirm gems were credited)",
+      },
       leaderboard: {
         submit: "POST /api/leaderboard/submit (auth; the server re-plays the run)",
         board: "GET /api/leaderboard/board?board=classic|daily:<day>|time:<secs>:<day>|tour:<week>",
@@ -170,6 +176,7 @@ app.use("/api/knowledge", knowledgeRouter);
 app.use("/api/luna-cycle", lunaCycleRouter);
 app.use("/api/game", gameProgressRouter);
 app.use("/api/leaderboard", leaderboardRouter);
+app.use("/api/purchases", purchaseRouter);
 app.use("/api/apple/notifications", appleNotificationRouter);
 // gsddhh
 app.use((req, res) => {
@@ -194,7 +201,7 @@ MongoDBConnect(mongoUri)
     app.listen(port, () => {
       console.log(`Server listening on port ${port}`);
     });
-    startPeriodReminderScheduler();
+    startDailyReminderScheduler();
   })
   .catch(() => process.exit(1));
 

@@ -32,6 +32,10 @@ require.cache[modelPath] = {
     deleteOne: async (q) => store.delete(String(q.userId)),
   },
 };
+// Verified purchases decide premium / removeAds (stubbed: no database).
+const owned = { premium: false, removeAds: false };
+const entPath = require.resolve("../services/entitlementService");
+require.cache[entPath] = { id: entPath, filename: entPath, loaded: true, exports: { entitlementsFor: async () => ({ ...owned }) } };
 const { getGameProgress, saveGameProgress, deleteGameProgress } = require("../controllers/gameProgressController");
 
 function call(handler, userId, body) {
@@ -117,4 +121,18 @@ test("merge helpers", () => {
   assert.ok(progressScore({ stars: { 1: 3 } }) > progressScore({ xp: 500 }));
   assert.equal(mergeProgress(null, { coins: 5 }).coins, 5);
   assert.equal(mergeSave({ tutorialDone: true }, { tutorialDone: false }, true).tutorialDone, true);
+});
+
+test("premium and removeAds come from verified purchases, never from the app", async () => {
+  store.clear();
+  owned.premium = false;
+  owned.removeAds = false;
+  const cheat = { ...base(), premium: true, removeAds: true };
+  const r = await call(saveGameProgress, "u1", { progress: cheat, baseRevision: 0 });
+  assert.equal(r.body.progress.premium, false);
+  assert.equal(r.body.progress.removeAds, false);
+  assert.equal((await call(getGameProgress, "u1")).body.progress.premium, false);
+  owned.premium = true;
+  assert.equal((await call(getGameProgress, "u1")).body.progress.premium, true);
+  owned.premium = false;
 });

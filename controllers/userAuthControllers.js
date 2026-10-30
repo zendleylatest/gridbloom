@@ -18,6 +18,7 @@ const PromptGeneration = require("../models/promptGenerationModel");
 const PushDeviceToken = require("../models/pushDeviceTokenModel");
 const LunaCycleState = require("../models/lunaCycleStateModel");
 const GameProgress = require("../models/gameProgressModel");
+const Purchase = require("../models/purchaseModel");
 const LeaderboardEntry = require("../models/leaderboardEntryModel");
 const FriendProfile = require("../models/friendProfileModel");
 const TournamentClaim = require("../models/tournamentClaimModel");
@@ -46,6 +47,8 @@ const googleAudiences = [
 ]
   .map((id) => (id || "").trim())
   .filter(Boolean);
+
+const { methodConflict } = require("../services/authProviders");
 
 const googleClient = process.env.GOOGLE_CLIENT_ID
   ? new OAuth2Client(process.env.GOOGLE_CLIENT_ID)
@@ -772,7 +775,17 @@ async function handleGoogleLogin(req, res) {
 
     const { sub, email, name, email_verified, picture } = payload;
 
-    let user = await User.findOne({ email });
+    let user = await User.findOne({ googleId: sub });
+    if (!user) {
+      const byEmail = await User.findOne({ email });
+      if (byEmail) {
+        // The email belongs to an account made another way (Apple, or email
+        // + password): do not take it over, tell the player which to use.
+        const conflict = methodConflict(byEmail, "google");
+        if (conflict) return res.status(409).json(conflict);
+        user = byEmail;
+      }
+    }
 
     if (!user) {
       user = await User.create({
@@ -846,6 +859,7 @@ async function handleAppleLogin(req, res) {
     console.error("Apple login error:", err.message);
     return res.status(status).json({
       error: err.message || "Apple authentication failed.",
+      ...(err.code ? { code: err.code, method: err.method } : {}),
       ...(err.bannedReason ? { bannedReason: err.bannedReason } : {}),
     });
   }
@@ -953,6 +967,7 @@ async function handleDeleteAccount(req, res) {
       PushDeviceToken.deleteMany({ userId: userId.toString() }),
       LunaCycleState.deleteOne({ userId }),
       GameProgress.deleteOne({ userId }),
+      Purchase.deleteMany({ userId }),
       LeaderboardEntry.deleteMany({ userId }),
       TournamentClaim.deleteMany({ userId }),
       FriendProfile.deleteOne({ userId }),

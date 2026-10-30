@@ -1,5 +1,6 @@
 const GameProgress = require("../models/gameProgressModel");
 const { mergeGameData } = require("../services/gameProgressMerge");
+const { entitlementsFor } = require("../services/entitlementService");
 
 const MAX_ATTEMPTS = 4;
 const isObj = (v) => v !== null && typeof v === "object" && !Array.isArray(v);
@@ -14,9 +15,20 @@ function view(record) {
   };
 }
 
+/**
+ * Paid unlocks come from verified purchases only: whatever the app sends for
+ * premium / removeAds is replaced by what the player really owns.
+ */
+async function withRealEntitlements(userId, progress) {
+  if (!isObj(progress)) return progress;
+  const owned = await entitlementsFor(userId);
+  return { ...progress, premium: owned.premium, removeAds: owned.removeAds };
+}
+
 async function getGameProgress(req, res) {
   try {
     const record = await GameProgress.findOne({ userId: req.authUser._id }).lean();
+    if (record) record.progress = await withRealEntitlements(req.authUser._id, record.progress);
     return res.json(view(record));
   } catch (error) {
     console.error("[game-progress:get]", error);
@@ -40,7 +52,7 @@ async function saveGameProgress(req, res) {
       return res.status(400).json({ error: "save must be an object" });
     }
     const incoming = {
-      progress,
+      progress: await withRealEntitlements(req.authUser._id, progress),
       save: save || {},
       clientUpdatedAt: clientUpdatedAt ? new Date(clientUpdatedAt) : new Date(),
     };
@@ -65,7 +77,10 @@ async function saveGameProgress(req, res) {
         { $set: { ...next }, $inc: { revision: 1 } },
         { new: true }
       ).lean();
-      if (updated) return res.json({ ...view(updated), merged: !inSync });
+      if (updated) {
+        updated.progress = await withRealEntitlements(userId, updated.progress);
+        return res.json({ ...view(updated), merged: !inSync });
+      }
     }
     return res.status(409).json({ error: "Game data changed while saving. Try again." });
   } catch (error) {
