@@ -114,6 +114,8 @@ const userSchema = new mongoose.Schema(
       default: "",
       trim: true,
     },
+    // Turned off in Settings to stop the twice-a-day reminder push.
+    dailyReminders: { type: Boolean, default: true },
     deviceTokens: [
       {
         token: {

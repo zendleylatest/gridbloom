@@ -264,7 +264,24 @@ async function removeToken(req, res) {
   }
 }
 
+/** PUT /api/notifications/preferences { dailyReminders: boolean } */
+async function setPreferences(req, res) {
+  try {
+    const user = req.authUser;
+    if (!user || !user._id) return res.status(401).json({ success: false, message: "Unauthorized" });
+    if (typeof req.body?.dailyReminders !== "boolean") {
+      return res.status(400).json({ success: false, message: "dailyReminders must be true or false" });
+    }
+    await User.updateOne({ _id: user._id }, { $set: { dailyReminders: req.body.dailyReminders } });
+    return res.json({ success: true, dailyReminders: req.body.dailyReminders });
+  } catch (error) {
+    console.error("[notification:setPreferences] error:", error);
+    return res.status(500).json({ success: false, message: "Failed to save preference" });
+  }
+}
+
 module.exports = {
+  setPreferences,
   registerToken,
   sendNotification,
   getTokens,

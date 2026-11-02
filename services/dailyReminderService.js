@@ -79,7 +79,11 @@ function messageFor(index, nowMs = Date.now()) {
 /** Every unique device token: logged-in users (not banned) plus standalone installs. */
 async function collectTokens() {
   const tokens = new Set();
-  const users = await User.find({ "deviceTokens.0": { $exists: true }, isBanned: { $ne: true } })
+  const users = await User.find({
+    "deviceTokens.0": { $exists: true },
+    isBanned: { $ne: true },
+    dailyReminders: { $ne: false },
+  })
     .select("deviceTokens")
     .lean();
   for (const u of users) for (const d of u.deviceTokens || []) if (d?.token) tokens.add(d.token);
@@ -207,6 +211,8 @@ function startDailyReminderScheduler() {
 }
 
 module.exports = {
+  collectTokens,
+  sendToAll,
   parseTimes,
   dueSlots,
   messageFor,
