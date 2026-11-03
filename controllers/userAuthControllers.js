@@ -267,19 +267,12 @@ async function attachGuestToDevice(user, device) {
     if (device.androidId) user.androidId = device.androidId;
     await user.save();
   }
-  const existingUsed = Number(user?.careUsage?.totalMessagesUsed || 0);
   await AndroidDeviceUsage.updateOne(
     { _id: device._id },
     {
       $set: {
         activeGuestUserId: user._id,
         lastSeenAt: new Date(),
-        ...(existingUsed > Number(device?.careUsage?.totalMessagesUsed || 0)
-          ? {
-              "careUsage.totalMessagesUsed": existingUsed,
-              "careUsage.updatedAt": new Date(),
-            }
-          : {}),
       },
       $addToSet: { guestUserIds: user._id },
     }
@@ -340,7 +333,6 @@ async function handleCreateGuest(req, res) {
         ...(guestKey ? { guestKey } : {}),
         ...(androidIdHash ? { androidIdHash } : {}),
         ...(androidId ? { androidId } : {}),
-        creationsPublic: false,
       });
     }
     await attachGuestToDevice(user, device);
@@ -917,15 +909,6 @@ async function handleUpdateProfile(req, res) {
     }
     if (req.file) {
       updates.image = `/uploads/profile/${req.file.filename}`;
-    }
-
-    const cp = req.body.creationsPublic;
-    if (cp !== undefined && cp !== null && cp !== "") {
-      if (cp === true || cp === "true" || cp === "1") {
-        updates.creationsPublic = true;
-      } else if (cp === false || cp === "false" || cp === "0") {
-        updates.creationsPublic = false;
-      }
     }
 
     if (Object.keys(updates).length === 0) {

@@ -96,10 +96,6 @@ const userSchema = new mongoose.Schema(
       count: { type: Number, default: 0 },
       windowStart: { type: Date },
     },
-    creationsPublic: {
-      type: Boolean,
-      default: true,
-    },
     isBanned: {
       type: Boolean,
       default: false,
@@ -136,61 +132,6 @@ const userSchema = new mongoose.Schema(
         },
       },
     ],
-    openAiUsage: {
-      promptTokens: { type: Number, default: 0 },
-      completionTokens: { type: Number, default: 0 },
-      totalTokens: { type: Number, default: 0 },
-      requestCount: { type: Number, default: 0 },
-      lastUsedAt: { type: Date, default: null },
-    },
-    subscriptionPlan: {
-      type: String,
-      enum: ["Free", "Premium"],
-      default: "Free",
-    },
-    isPro: {
-      type: Boolean,
-      default: false,
-    },
-    subscription: {
-      platform: {
-        type: String,
-        enum: ["android", "ios", "web", "amazon", "none"],
-        default: "none",
-      },
-      productId: { type: String, trim: true },
-      purchaseToken: { type: String, trim: true },
-      storeUserId: { type: String, trim: true },
-      originalTransactionId: { type: String, trim: true },
-      status: {
-        type: String,
-        enum: ["inactive", "active", "expired", "cancelled", "verify_failed", "unsupported"],
-        default: "inactive",
-      },
-      expiresAt: Date,
-      // null = unknown (store didn't say); false = user cancelled renewal.
-      autoRenewing: { type: Boolean, default: null },
-      isTrial: { type: Boolean, default: false },
-      lastVerifiedAt: Date,
-      source: {
-        type: String,
-        default: "none",
-      },
-    },
-    careUsage: {
-      totalMessagesUsed: {
-        type: Number,
-        default: 0,
-        min: 0,
-      },
-      updatedAt: Date,
-      logsUsed: {
-        type: Number,
-        default: 0,
-        min: 0,
-      },
-      logsUpdatedAt: Date,
-    },
   },
   { timestamps: true }
 );

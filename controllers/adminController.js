@@ -3,12 +3,6 @@ const User = require("../models/usersModel");
 const PushDeviceToken = require("../models/pushDeviceTokenModel");
 const ChatUsage = require("../models/chatUsageModel");
 const { ensureFirebaseAdmin } = require("../utils/firebaseAdminInit");
-const {
-  buildCareLimitConfig,
-  computeUserIsPro,
-  getCareChatLimitForUser,
-  isGuestUser,
-} = require("../services/careLimitService");
 
 async function getUsers(req, res) {
   try {
@@ -17,13 +11,7 @@ async function getUsers(req, res) {
       .sort({ createdAt: -1 })
       .lean();
 
-    const limitConfig = buildCareLimitConfig();
     const rows = users.map((u) => {
-      const isPro = computeUserIsPro(u);
-      const isGuest = isGuestUser(u);
-      const limit = getCareChatLimitForUser(u);
-      const used = Number(u.careUsage?.totalMessagesUsed) || 0;
-
       return {
         id: u._id,
         name: u.name || "",
@@ -37,37 +25,11 @@ async function getUsers(req, res) {
         createdAt: u.createdAt,
         updatedAt: u.updatedAt,
         deviceTokenCount: Array.isArray(u.deviceTokens) ? u.deviceTokens.length : 0,
-        subscriptionPlan: u.subscriptionPlan || (isPro ? "Premium" : "Free"),
-        isPro,
-        subscription: u.subscription || {},
-        careUsage: {
-          totalMessagesUsed: used,
-          updatedAt: u.careUsage?.updatedAt || null,
-        },
-        careEntitlement: {
-          isPro,
-          isGuest,
-          isUnlimited: isPro,
-          limit,
-          freeLimit: limit,
-          limits: limitConfig,
-          used,
-          remaining: isPro ? null : Math.max(0, limit - used),
-          hardLocked: !isPro && used >= limit,
-        },
-        openAiUsage: {
-          promptTokens: Number(u.openAiUsage?.promptTokens) || 0,
-          completionTokens: Number(u.openAiUsage?.completionTokens) || 0,
-          totalTokens: Number(u.openAiUsage?.totalTokens) || 0,
-          requestCount: Number(u.openAiUsage?.requestCount) || 0,
-          lastUsedAt: u.openAiUsage?.lastUsedAt || null,
-        },
       };
     });
 
     return res.json({
       success: true,
-      careLimits: limitConfig,
       users: rows,
     });
   } catch (error) {
@@ -193,45 +155,18 @@ async function getUsageOverview(req, res) {
           bannedUsers: {
             $sum: { $cond: [{ $eq: ["$isBanned", true] }, 1, 0] },
           },
-          totalPromptTokens: { $sum: { $ifNull: ["$openAiUsage.promptTokens", 0] } },
-          totalCompletionTokens: { $sum: { $ifNull: ["$openAiUsage.completionTokens", 0] } },
-          totalTokens: { $sum: { $ifNull: ["$openAiUsage.totalTokens", 0] } },
-          totalRequests: { $sum: { $ifNull: ["$openAiUsage.requestCount", 0] } },
         },
       },
     ]);
 
-    const topUsers = await User.find({})
-      .select("name email isBanned openAiUsage")
-      .sort({ "openAiUsage.totalTokens": -1 })
-      .limit(20)
-      .lean();
-
     const summary = agg[0] || {
       users: 0,
       bannedUsers: 0,
-      totalPromptTokens: 0,
-      totalCompletionTokens: 0,
-      totalTokens: 0,
-      totalRequests: 0,
     };
 
     return res.json({
       success: true,
       summary,
-      topUsers: topUsers.map((u) => ({
-        id: u._id,
-        name: u.name || "",
-        email: u.email || "",
-        isBanned: !!u.isBanned,
-        openAiUsage: {
-          promptTokens: Number(u.openAiUsage?.promptTokens) || 0,
-          completionTokens: Number(u.openAiUsage?.completionTokens) || 0,
-          totalTokens: Number(u.openAiUsage?.totalTokens) || 0,
-          requestCount: Number(u.openAiUsage?.requestCount) || 0,
-          lastUsedAt: u.openAiUsage?.lastUsedAt || null,
-        },
-      })),
     });
   } catch (error) {
     console.error("[admin:getUsageOverview] error:", error);
