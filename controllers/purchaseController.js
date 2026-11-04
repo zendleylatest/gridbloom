@@ -44,7 +44,8 @@ async function verifyPurchase(req, res) {
     if (!result.ok) {
       // The store could not be reached: the app keeps the purchase and retries.
       if (result.retryable) {
-        return res.status(503).json({ retryable: true, error: "Could not reach the store. Try again shortly." });
+        console.warn(`[purchase] store unavailable for ${platform}/${productId}: ${result.reason}`);
+        return res.status(503).json({ retryable: true, error: "Could not reach the store. Try again shortly.", reason: result.reason });
       }
       console.warn(`[purchase] rejected ${platform}/${productId} for ${user._id}: ${result.reason}`);
       return res.status(400).json({ error: "This purchase could not be verified.", reason: result.reason });
