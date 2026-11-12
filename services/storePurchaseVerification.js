@@ -12,7 +12,7 @@
 const jwt = require("jsonwebtoken");
 
 const PACKAGE = () => process.env.ANDROID_PACKAGE_NAME || "com.speckpro.gridbloomgame.android";
-const BUNDLE = () => process.env.APPLE_BUNDLE_ID || "com.speckpro.gridbloomgame.android";
+const BUNDLE = () => process.env.APPLE_BUNDLE_ID || "com.speckpro.gridbloomgame.ios";
 const GOOGLE_API = "https://androidpublisher.googleapis.com/androidpublisher/v3/applications";
 
 function defaults() {
