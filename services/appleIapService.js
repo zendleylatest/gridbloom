@@ -1,13 +1,15 @@
 const jwt = require('jsonwebtoken');
 
 // 1. Generate JWT for App Store Server API (ES256, expires 1hr)
+// Apple requires the app's bundle ID (`bid`) in the token for the App Store
+// Server API; without it Apple answers 401 and no purchase can be verified.
 const generateAppleJWT = () => {
   const privateKey = process.env.APPLE_IAP_PRIVATE_KEY;
   if (!privateKey) {
     throw new Error('APPLE_IAP_PRIVATE_KEY is not configured');
   }
   const formattedPrivateKey = privateKey.replace(/\\n/g, '\n');
-  return jwt.sign({}, formattedPrivateKey, {
+  return jwt.sign({ bid: process.env.APPLE_BUNDLE_ID }, formattedPrivateKey, {
     algorithm: 'ES256',
     keyid: process.env.APPLE_IAP_KEY_ID,
     issuer: process.env.APPLE_IAP_ISSUER_ID,

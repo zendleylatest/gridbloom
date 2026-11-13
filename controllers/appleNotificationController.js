@@ -1,5 +1,49 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/usersModel");
+const Purchase = require("../models/purchaseModel");
+const { verifyOneTimePurchase } = require("../services/storePurchaseVerification");
+
+const BUNDLE = () => process.env.APPLE_BUNDLE_ID || "com.speckpro.gridbloomgame.ios";
+
+/**
+ * Gridbloom one-time purchases: Apple tells us a transaction changed (refund,
+ * reversal, ...). The payload is only used to find the purchase; the new state
+ * always comes from asking the App Store Server API again, so a forged or
+ * replayed notification cannot revoke or grant anything.
+ *
+ * Returns "handled" (answer 200), "retry" (answer 500 so Apple resends) or
+ * "unknown" (not a Gridbloom purchase).
+ */
+async function applyGridbloomNotification(notificationType, transaction, deps) {
+  if (!transaction || (transaction.bundleId && transaction.bundleId !== BUNDLE())) {
+    return "unknown";
+  }
+  const id = transaction.originalTransactionId || transaction.transactionId;
+  if (!id) return "unknown";
+  const purchase = await Purchase.findOne({ key: `ios:${id}` });
+  if (!purchase) return "unknown";
+
+  const res = await verifyOneTimePurchase(
+    { platform: "ios", productId: purchase.productId, token: purchase.token },
+    deps
+  );
+  if (res.ok) {
+    // E.g. REFUND_REVERSED: Apple took the refund back.
+    if (purchase.status === "revoked") {
+      purchase.status = "active";
+      purchase.verifiedAt = new Date();
+      await purchase.save();
+    }
+    return "handled";
+  }
+  if (res.retryable) return "retry";
+  if (purchase.status !== "revoked") {
+    purchase.status = "revoked";
+    await purchase.save();
+    console.warn(`[apple] ${notificationType}: revoked ${purchase.productId} (${purchase.key})`);
+  }
+  return "handled";
+}
 
 async function handleAppleNotification(req, res) {
   try {
@@ -24,6 +68,10 @@ async function handleAppleNotification(req, res) {
 
     const transaction = jwt.decode(data.signedTransactionInfo);
     if (!transaction) return res.status(200).send("OK");
+
+    const mine = await applyGridbloomNotification(notificationType, transaction);
+    if (mine === "retry") return res.status(500).send("Try again");
+    if (mine === "handled") return res.status(200).send("OK");
 
     const originalTransactionId = transaction.originalTransactionId;
     if (!originalTransactionId) return res.status(200).send("OK");
@@ -68,4 +116,4 @@ async function handleAppleNotification(req, res) {
   }
 }
 
-module.exports = { handleAppleNotification };
+module.exports = { handleAppleNotification, applyGridbloomNotification };
